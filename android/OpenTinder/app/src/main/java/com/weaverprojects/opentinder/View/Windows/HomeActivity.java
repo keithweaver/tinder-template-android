@@ -24,11 +24,11 @@ import butterknife.InjectView;
 /**
  * Created by Keith on 2015-10-03.
  */
-public class HomeActivity extends FragmentActivity implements ActionBar.TabListener{
+public class HomeActivity extends Activity{
     public static final String TAG = "";
 
     //Tabs
-    private ViewPager viewPager;
+
     private ActionBar actionBar;
     private HomeTabsAdapter mHomeTabsAdapter;
 
@@ -36,28 +36,18 @@ public class HomeActivity extends FragmentActivity implements ActionBar.TabListe
     private ArrayList<String> cardsList;
     private ArrayAdapter<String> mArrayAdapter;
     private int i;
-    @InjectView(R.id.frame) SwipeFlingAdapterView flingContainer;
+    SwipeFlingAdapterView flingContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_ACTION_BAR);
+        //requestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.activity_home);
 
         getActionBar().setDisplayHomeAsUpEnabled(false);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-        actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        //Add profile button and settings button
-        actionBar.addTab(actionBar.newTab().setText("HOME").setTabListener(this));
-        actionBar.addTab(actionBar.newTab().setText("CHATS").setTabListener(this));
-        actionBar.addTab(actionBar.newTab().setText("MOMENTS").setTabListener(this));
-        actionBar.setTitle("tinder");
-        mHomeTabsAdapter = new HomeTabsAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(mHomeTabsAdapter);
 
-        //Home Swipeable cards
-        ButterKnife.inject(this);
+        flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
+
         cardsList = new ArrayList<>();
         cardsList.add("Card 1");
         cardsList.add("Card 2");
@@ -111,41 +101,5 @@ public class HomeActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     protected void onDestroy(){
         super.onDestroy();
-    }
-    //---- Tab
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft)
-    {
-        viewPager.setCurrentItem(tab.getPosition());
-
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
-        {
-
-            @Override
-            public void onPageSelected(int position)
-            {
-                actionBar.setSelectedNavigationItem(position);
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2)
-            {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0)
-            {
-            }
-        });
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
     }
 }
