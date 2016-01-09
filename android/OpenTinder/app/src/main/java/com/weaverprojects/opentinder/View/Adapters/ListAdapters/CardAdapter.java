@@ -2,6 +2,7 @@ package com.weaverprojects.opentinder.View.Adapters.ListAdapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class CardAdapter extends ArrayAdapter<BasicProfile> {
 
             holder = new UserHolder();
 
-            holder.cardId = (RelativeLayout) row.findViewById(R.id.cardId);
+            holder.cardId = (CardView) row.findViewById(R.id.cardId);
             holder.profileImageView = (ImageView) row.findViewById(R.id.profileImageView);
             holder.nameTextView = (TextView) row.findViewById(R.id.nameTextView);
             holder.ageTextView = (TextView) row.findViewById(R.id.ageTextView);
@@ -64,7 +65,7 @@ public class CardAdapter extends ArrayAdapter<BasicProfile> {
         return row;
     }
     static class UserHolder{
-        RelativeLayout cardId;
+        CardView cardId;
         ImageView profileImageView;
         TextView nameTextView;
         TextView ageTextView;
