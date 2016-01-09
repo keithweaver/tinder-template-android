@@ -7,13 +7,17 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
+import com.weaverprojects.opentinder.Model.BasicProfile;
 import com.weaverprojects.opentinder.R;
+import com.weaverprojects.opentinder.View.Adapters.ListAdapters.CardAdapter;
 import com.weaverprojects.opentinder.View.Adapters.TabsAdapter.HomeTabsAdapter;
 
 import java.util.ArrayList;
@@ -24,7 +28,9 @@ import butterknife.InjectView;
 /**
  * Created by Keith on 2015-10-03.
  */
-public class HomeActivity extends Activity{
+public class HomeActivity extends Activity {
+    String markerZuckyImg = "http://a4.files.biography.com/image/upload/c_fill,cs_srgb,dpr_1.0,g_face,h_300,q_80,w_300/MTIwNjA4NjMzNjg3ODAzNDA0.jpg";
+
     public static final String TAG = "";
 
     //Tabs
@@ -33,8 +39,8 @@ public class HomeActivity extends Activity{
     private HomeTabsAdapter mHomeTabsAdapter;
 
     //Home Activity
-    private ArrayList<String> cardsList;
-    private ArrayAdapter<String> mArrayAdapter;
+    private ArrayList<BasicProfile> cardsList;
+    private CardAdapter mArrayAdapter;
     private int i;
     SwipeFlingAdapterView flingContainer;
 
@@ -49,14 +55,12 @@ public class HomeActivity extends Activity{
         flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         cardsList = new ArrayList<>();
-        cardsList.add("Card 1");
-        cardsList.add("Card 2");
-        cardsList.add("Card 3");
-        cardsList.add("Card 4");
-        cardsList.add("Card 5");
-        cardsList.add("Card 6");
+        for(int i = 0;i < 15;i++) {
+            String temp = String.valueOf(i);
+            cardsList.add(new BasicProfile("randomcode" + temp, "First" + temp, "Last" + temp, markerZuckyImg, i));
+        }
 
-        mArrayAdapter = new ArrayAdapter<>(this, R.layout.cards_item, R.id.helloText, cardsList);
+        mArrayAdapter = new CardAdapter(this, R.layout.cards_item, cardsList);
 
         flingContainer.setAdapter(mArrayAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
@@ -65,21 +69,25 @@ public class HomeActivity extends Activity{
                 cardsList.remove(0);
                 mArrayAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onLeftCardExit(Object o) {
                 Toast.makeText(HomeActivity.this, "Left", Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onRightCardExit(Object o) {
                 Toast.makeText(HomeActivity.this, "Right", Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onAdapterAboutToEmpty(int i) {
-                cardsList.add("XML ".concat(String.valueOf(i)));
+                //cardsList.add("XML ".concat(String.valueOf(i)));
                 mArrayAdapter.notifyDataSetChanged();
                 Log.d("LIST", "notified");
                 i++;
             }
+
             @Override
             public void onScroll(float v) {
                 View view = flingContainer.getSelectedView();
@@ -90,16 +98,47 @@ public class HomeActivity extends Activity{
 
 
     }
+
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
     }
+
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
     }
+
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }else if(id == R.id.action_chats){
+
+            return true;
+        }else if(id == R.id.action_profile){
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
