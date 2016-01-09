@@ -3,6 +3,7 @@ package com.weaverprojects.opentinder.View.Windows;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -130,9 +131,11 @@ public class HomeActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }else if(id == R.id.action_chats){
-
+            Intent openChatWindow = new Intent(this, ChatsActivity.class);
+            startActivity(openChatWindow);
             return true;
         }else if(id == R.id.action_profile){
 

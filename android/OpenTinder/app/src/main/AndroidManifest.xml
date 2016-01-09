@@ -21,7 +21,8 @@
 
         <activity android:name=".View.Windows.LogInActivity"></activity>
         <activity android:name=".View.Windows.HomeActivity"></activity>
-        <activity android:name=".View.Windows.ConvoActivity"></activity>
+        <activity android:name=".View.Windows.ChatsActivity"></activity>
+        <activity android:name=".View.Windows.ChatActivity"></activity>
         <activity android:name=".View.Windows.SettingsActivity"></activity>
         <activity android:name=".View.Windows.DiscoveryActivity"></activity>
         <activity android:name=".View.Windows.EditProfileActivity"></activity>

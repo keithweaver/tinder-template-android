@@ -8,7 +8,7 @@ import com.weaverprojects.opentinder.R;
 /**
  * Created by Keith on 2015-10-03.
  */
-public class ConvoActivity extends Activity {
+public class ChatActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
