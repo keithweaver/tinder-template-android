@@ -1,5 +1,16 @@
 # tinder-template-android
 
+
+### Update videos
+
+https://www.youtube.com/watch?v=5kmZ8lEPMIA
+
+https://www.youtube.com/watch?v=dkJPaSlpGt0
+
+
+
+
+
 Windows:
 
 Splash
