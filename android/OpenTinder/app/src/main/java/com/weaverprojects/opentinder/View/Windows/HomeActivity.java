@@ -13,13 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.weaverprojects.opentinder.Model.BasicProfile;
 import com.weaverprojects.opentinder.R;
 import com.weaverprojects.opentinder.View.Adapters.ListAdapters.CardAdapter;
-import com.weaverprojects.opentinder.View.Adapters.TabsAdapter.HomeTabsAdapter;
+
 
 import java.util.ArrayList;
 
@@ -37,13 +38,16 @@ public class HomeActivity extends Activity {
     //Tabs
 
     private ActionBar actionBar;
-    private HomeTabsAdapter mHomeTabsAdapter;
+
 
     //Home Activity
     private ArrayList<BasicProfile> cardsList;
     private CardAdapter mArrayAdapter;
     private int i;
     SwipeFlingAdapterView flingContainer;
+
+    ImageView left;
+    ImageView right;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,8 @@ public class HomeActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(false);
 
         flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
+        left = (ImageView) findViewById(R.id.left);
+        right = (ImageView) findViewById(R.id.right);
 
         cardsList = new ArrayList<>();
         for(int i = 0;i < 15;i++) {
@@ -97,7 +103,18 @@ public class HomeActivity extends Activity {
             }
         });
 
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -138,7 +155,8 @@ public class HomeActivity extends Activity {
             startActivity(openChatWindow);
             return true;
         }else if(id == R.id.action_profile){
-
+            Intent openProfileWindow = new Intent(this, ProfileActivity.class);
+            startActivity(openProfileWindow);
             return true;
         }
 

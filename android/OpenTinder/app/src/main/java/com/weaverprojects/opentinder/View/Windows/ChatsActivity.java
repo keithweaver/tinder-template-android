@@ -6,8 +6,12 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.weaverprojects.opentinder.Controller.Testing.Testing_Chat;
 import com.weaverprojects.opentinder.Model.Chat;
 import com.weaverprojects.opentinder.R;
+import com.weaverprojects.opentinder.View.Adapters.ListAdapters.ChatsAdapter;
+
+import junit.framework.Test;
 
 import java.util.ArrayList;
 
@@ -21,6 +25,7 @@ public class ChatsActivity extends Activity {
     TextView noChatsTextView;
 
     ArrayList<Chat> ongoingChats;
+    ChatsAdapter mChatsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +38,12 @@ public class ChatsActivity extends Activity {
         ongoingChats = new ArrayList();
         
         //Load past chats
+        ongoingChats = Testing_Chat.getChats();
 
         handleXChats();
 
-
-
-
+        mChatsAdapter = new ChatsAdapter(this, R.layout.single_chat_item, ongoingChats);
+        chatsListView.setAdapter(mChatsAdapter);
     }
     @Override
     protected void onPause(){

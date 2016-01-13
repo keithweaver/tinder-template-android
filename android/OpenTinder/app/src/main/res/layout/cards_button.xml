@@ -6,18 +6,25 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <Button
+    <ImageView
         android:id="@+id/left"
-        android:layout_margin="10dp"
-        android:text="Left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <Button
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/xx"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp" />
+
+    <ImageView
         android:id="@+id/right"
-        android:layout_margin="10dp"
-        android:text="Right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/checkk"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp" />
 
 </LinearLayout>

@@ -1,9 +1,11 @@
 package com.weaverprojects.opentinder.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by keithweaver on 16-01-08.
  */
-public class Message {
+public class Message implements Serializable{
     String messageId;
     long timeStamp;
     String message;

@@ -45,21 +45,25 @@
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
-    <View
-        android:id="@+id/item_swipe_left_indicator"
-        android:alpha="0"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_margin="10dp"
-        android:background="#A5F" />
 
-    <View
-        android:id="@+id/item_swipe_right_indicator"
-        android:alpha="0"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_margin="10dp"
-        android:layout_gravity="right"
-        android:background="#5AF" />
+        <Button
+
+            android:background="@drawable/x"
+            android:id="@+id/item_swipe_left_indicator"
+            android:alpha="0"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"/>
+
+
+        <Button
+            android:id="@+id/item_swipe_right_indicator"
+            android:alpha="0"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="right"
+            android:background="@drawable/check"
+            />
 
 </FrameLayout>
